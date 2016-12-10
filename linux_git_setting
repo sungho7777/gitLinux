@@ -21,6 +21,7 @@
     cd GIT
     git clone git://github.com/schacon/simplegit.git
     git clone https://github.com/sungho7777/gitLinux.git
+    git clone https://github.com/facebook/react.git
 
 4. 작업의 흐름(개념)
   > 로컿 저장소는 git이 관리하는 세 그루의 나무로 구성되어 있다고 생각하면 편하다.
