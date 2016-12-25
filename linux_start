@@ -1,0 +1,270 @@
+
+
+
+* sudo
+    : 슈퍼관리자의 권한으로 명령을 실행하는 방법
+	ㄴ sudo = super user do
+	ㄴ permission...
+
+* nano
+    : 파일에 정보를 추가하고 편집하는 에디터
+	ㄴ nano
+	ㄴ ...
+	ㄴ ctrl+o
+	ㄴ filename
+	ㄴ save
+	ㄴ ctrl+k - text cut
+	ㄴ ctrl+u - text paste
+	ㄴ ctrl+x - exit
+
+* package manage
+    : 운영체제에 기본적으로 설치되어 있지 않은 프로그램을 쉽게 설치할 수 있는 방법으로 이용
+      리눅스 배포판에 따라 사용방법이 조금씩 다르나 대체적으로 비슷함.
+      apt 를 이용해서 패키지 관리 방법
+	ㄴ sudo apt-get update
+	ㄴ sudo apt-cache search htop
+		aha - ANSI color to HTML converter
+		htop - interactive processes viewer
+		libauthen-oath-perl - Perl module for OATH One Time Passwords
+	ㄴ sudo apt-get --help
+	ㄴ sudo apt-get install htop
+	ㄴ password
+	ㄴ htop
+	ㄴ sudo apt-get upgrade htop
+	ㄴ sudo apt-get remove htop
+	ㄴ Y - end
+	ㄴ whereis htop
+		htop: /usr/bin/htop /usr/share/man/man1/htop.1.gz
+
+* download wget
+    : 명령어 기반의 시스템에서 파일을 다운로드 하는 방법
+	ㄴ cd hello
+	ㄴ wget http://unsplash.com/photos/8V8qCIIo554/download
+		Saving to: ‘download’
+		download  100%[=====================ㄴ]   1.13M  2.45MB/s   in 0.5s   
+		2016-12-23 16:10:41 (2.45 MB/s) - ‘download’ saved [1182154/1182154]
+	ㄴ ls -l
+	ㄴ mv download download.jpeg
+	ㄴ wget -O paris.jpeg http://unsplash.com/photos/8V8qCIIo554/download
+	ㄴ ls -l
+
+* download git
+	ㄴ linux_git_setting 참조
+
+* why?? CLI...vs GUI...
+    : 컴퓨터의 부하나 그래픽적으로 자원을 아낄 수 있는 CLI
+	ㄴ 순차적으로 실행...
+	ㄴ cd ~; mkdir why; cd why; pwd
+
+* grep & | (pipeline)
+    : 순차적으로 | 를 이용하여 명령어를 실행
+	ㄴ nano wikiLinux.txt
+	ㄴ ctrl+v
+	ㄴ ctrl+o ㄴ save
+	ㄴ ctrl+x
+	ㄴ grep linux wiki.txt
+	ㄴ ls --help | grep sort
+	ㄴ ls --help | grep sort | grep file
+	ㄴ ps aux
+	ㄴ ps aux | grep apache
+
+* IO Redirection (Output)
+    : standard Output
+	ㄴ ls -l
+	ㄴ ls -l > result.log
+	ㄴ cat result.log
+	ㄴ rm result.log
+	ㄴ rm result.log
+		rm: `result.log'를 지울 수 없음: 그런 파일이나 디렉터리가 없습니다
+    : standard Error
+	ㄴ rm result.log 2> error.log
+	ㄴ cat error.log
+	ㄴ rm result.log 1> ok.txt 2> error.txt
+
+* IO Redirection (Input)
+    : standard Input
+	ㄴ cd ~
+	ㄴ cd hello
+	ㄴ cat helloNano.html (commond line)
+	ㄴ cat
+	   aaaaa
+	   aaaaa
+	   linux
+	   linux
+	ㄴ cat < helloNano.html (standard input)
+	ㄴ head linux.txt
+	ㄴ head -n linux.txt
+	ㄴ head -n < linux.txt
+	ㄴ head -n < linux.txt > one.txt
+
+* IO Redirection (append)
+	ㄴ cd ~
+	ㄴ cd hello
+	ㄴ ls -l > ls.txt
+	ㄴ ls -l >> ls.txt
+	ㄴ ls -l >> ls.txt
+	ㄴ ls -l >> ls.txt
+	ㄴ cat ls.txt
+
+* shell & kernel
+    : 사용자가 명령을 입력하면 그 명령을 컴퓨터가 이해 할 수 있도록 하는 프로그램 쉘(shell)
+      명령을 해석하는 쉘과 실제로 일을 하는 커널의 관계 설명
+	Application
+	ㄴ Shell (bash vs zsh)
+	   ㄴ Kernel
+	      ㄴ Hardware
+	ㄴ echo 'hello'
+	ㄴ echo $0
+	ㄴ sudo apt-get install zsh
+	ㄴ zsh
+	ㄴ echo $0
+	ㄴ exit
+
+* shell & script
+    : 쉘을 통해서 명령을 실행시키는 작업을 한번에 실핼할 수 있는 방법 설명
+	ㄴ cd ~
+	ㄴ mkdir script
+	ㄴ nano backup
+		#!/bin/bash
+		if ! [ -d bak ]; then
+			mkdir bak
+		fi
+		cp *.log bak
+	ㄴ ctrl+o
+	ㄴ ctrl+x
+	ㄴ ls -l
+	ㄴ touch a.log b.log c.log
+	ㄴ ./backup
+		bash: ./backup: 허가 거부
+	ㄴ chmod +x backup
+	ㄴ ls -l
+	ㄴ ./backup
+	ㄴ ls -l bak
+	ㄴ rm bak/c.log
+	ㄴ ./backup
+	ㄴ ls -l bak
+
+* linux directory structure
+    : google >> linux directory structure >> http://webdir.tistory.com/101 (참조)
+	/(루트)
+	 최상의 디렉토리인 루트 디렉토리를 의미하며, 리눅스의 모든 디렉토리들의 시작점이다. 
+	 즉, 모든 디렉토리들을 절대경로로 표기할 때에 이 디렉토리로부터 시작해야 한다.
+	/bin
+	 기본적인 명령어가 저장된 디렉토리. 
+	 즉, 리눅스 시스템사용에 있어 가장 기본적이라고 할 수 있는 mv, cp, rm 등과 같은 명령어들이 
+	 이 디렉토리에 존재하며 root 사용자와 일반사용자가 함께 사용할 수 있는 명령어 디렉토리이다.
+	/etc
+	 시스템의 거의 모든 설정파일이 존재하는 디렉토리. 
+	 /etc/sysconfig(시스템 제어판용 설정파일), /etc/passwd(사용자관리 설정파일), 
+	 /etc/named.conf(DNS 설정파일) 등과 같은 파일들이 존재한다.
+	/root
+	 시스템 최고관리자인 root 사용자의 개인 홈디렉토리.
+	/var
+	 시스템운용중에 생성되었다가 삭제되는 데이터를 일시적으로 저장하기 위한 디렉토리. 
+	 거의 모든 시스템로그파일은 /var/log 에 저장되고, DNS 의 zone 설정파일은 /var/named 
+	 에 저장되고, 메일파일은 /var/spool/mail 에 저장되며, 크론설정파일은 /var/spool/cron 
+	 디렉토리에 각각 저장됨.
+	/tmp
+	 일명 "공용디렉토리" . 시스템을 사용하는 모든 사용자들이 공동으로 사용하는 디렉토리. 
+	 mysql 에서 사용하는 mysql.sock 등과 같은 소켓파일, 또는 아파치에서 사용하는 세션파일등이 
+	 생성되기도 한다. 웹해킹에 사용되기도 해서 주의를 요망.
+	/home
+	 사용자의 홈디렉토리, useradd 명령어로 새로운 사용자를 생성하면 대부분 사용자의 
+	 ID와 동일한 이름의 디렉토리가 자동으로 생성됨.
+
+* linux process 1 : computer structrue
+    : 프로그램은 일반적으로 하드 디스크 등에 저장되어 있는 실행코드를 뜻하고, 
+      프로세스는 프로그램을 구동하여 프로그램 자체와 프로그램의 상태가 메모리 상에서 실행되는 
+      작업 단위를 지칭한다. 
+      예를 들어, 하나의 프로그램을 여러 번 구동하면 여러 개의 프로세스가 메모리 상에서 실행된다.
+	ㄴ HDD > program > /bin, /sbin > storage
+		 command > mkdir, top, rm, ls
+	ㄴ RAM > memory
+	ㄴ CPU > processor
+	ㄴ 
+	ㄴ process !!
+
+* linux process 2 : ps top htop
+    : 현재 실행 중인 프로세스 목록 모니터링 하는 방법 설명
+	ㄴ ps
+	  PID TTY          TIME CMD
+	  2727 pts/2    00:00:00 bash
+	  5165 pts/2    00:00:00 ps
+	ㄴ ps aux
+	ㄴ ps aux | grep apache
+	ㄴ sudo kill 1890
+	ㄴ sudo top
+	ㄴ sudo apt-get install htop
+	ㄴ sudo htop
+
+* locate & find
+    : 파일 찾는 방법 1
+      locate 는 mlocate의 datebase에서 찾음(sudo updatedb)
+      find 는 http://webdir.tistory.com/155 참조
+	ㄴ locate *.log
+	ㄴ man locate
+	ㄴ find --help | head
+	ㄴ find ~ -name *.log
+	ㄴ find ~ -type f -name *.log
+
+* whereis & $PATH
+    : $PATH 에 설정된 경로를 차례대로 체크 후 ls 명령어가 존재하면 실행 됨.
+	ㄴ whereis ls 
+		ls: /bin/ls /usr/share/man/man1/ls.1.gz
+	ㄴ ls
+	ㄴ /bin/ls
+	ㄴ echo $PATH
+
+* background start
+	ㄴ Ctrl + z : 실행중인 프로그램을 백그라운드로 보내는 단축키
+	ㄴ jobs : 백그라운드 작업들의 목록을 보여줍니다. 
+	ㄴ fg : 전에 실행되고 있는 작업창으로 이동된다.
+	ㄴ fg %2 : 2번 프로그램 작업창으로 이동된다
+	ㄴ kill -9 %2 : 실행되고 있는 2번 작업창을 종료한다.
+	 &가 명령어 뒤에 붙으면 명령어가 실행될 때 백그라운드로 실행됩니다. 
+		ex) ls -alR / > result.txt 2> error.log & : 
+
+* 항상실행(demon, service)
+
+
+
+	ㄴ 
+	ㄴ 
+	ㄴ 
+	ㄴ 
+	ㄴ 
+	ㄴ 
+	ㄴ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
